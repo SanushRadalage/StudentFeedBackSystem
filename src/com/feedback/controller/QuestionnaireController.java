@@ -36,8 +36,11 @@ public class QuestionnaireController {
 		return remoteInterface.getAnalytics(lecturerId);
 	}
 	
-	public String cartConfiguration() throws Exception {
-		return remoteInterface.chartConfigure();
+	public String cartConfiguration(String chartType, List<Analytics> analyticsList) throws Exception {
+		return remoteInterface.chartConfigure(chartType, analyticsList);
 	}
 	
+	public Boolean signIn(String username, String password) throws Exception {
+		return remoteInterface.signInData(username, password);
+	}
 }

@@ -5,10 +5,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
+
+import com.feedback.controller.QuestionnaireController;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
@@ -25,6 +32,10 @@ public class AdminSignUp extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -2763124822272080102L;
+	
+	QuestionnaireController questionnaireController = new QuestionnaireController();
+
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
@@ -65,17 +76,27 @@ public class AdminSignUp extends JFrame {
 		
 		JButton btnNewButton = new JButton("Sign In");
 		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				AnalyticsView analyticView;
-				try {
-					analyticView = new AnalyticsView();
-					analyticView.setVisible(true);
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-
-				AdminSignUp.this.dispose();
 				
+				try {
+					if(questionnaireController.signIn(textField.getText(), passwordField.getText())) {
+						AnalyticsView analyticView = new AnalyticsView();
+						analyticView.setVisible(true);
+						AdminSignUp.this.dispose();
+					} else {
+						  JDialog.setDefaultLookAndFeelDecorated(true);
+						    int response = JOptionPane.showConfirmDialog(null, "Invalid credentials, Do you want to try again?", "warning!",
+						        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+						    if (response == JOptionPane.NO_OPTION) {}
+						    else if (response == JOptionPane.YES_OPTION) {
+						    	textField.setText(null);
+						    	passwordField.setText(null);
+						    }
+					}
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}				
 			}
 		});
 		btnNewButton.setAlignmentY(0.0f);

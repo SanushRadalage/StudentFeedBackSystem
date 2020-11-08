@@ -173,7 +173,7 @@ public class QuestionnaireView extends JFrame {
 		JLabel lblNewLabel_6 = new JLabel(currentQuestion.getAnswer3());
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
-		lblNewLabel_6.setBounds(342, 88, 88, 20);
+		lblNewLabel_6.setBounds(335, 88, 94, 20);
 		panel.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel(currentQuestion.getAnswer4());
@@ -218,9 +218,6 @@ public class QuestionnaireView extends JFrame {
 					e1.printStackTrace();
 				}
 				
-    			for(Analytics analytics: getAnalyticsList) {
-    			    System.out.println(analytics.toString());
-    		}
 				
 				SelectedAnswers selectedAnswer = new SelectedAnswers(currentQuestionId, answerId);
 				selectdAnswers.add(selectedAnswer);

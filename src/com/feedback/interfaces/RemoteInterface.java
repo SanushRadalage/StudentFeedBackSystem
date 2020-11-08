@@ -13,6 +13,6 @@ public interface RemoteInterface extends Remote {
 	   public Boolean signInData(String username,String password) throws Exception;
 	   public void setAnalytics(Analytics analytics) throws Exception;
 	   public List<Analytics> getAnalytics(int lecId) throws Exception;
-	   public String chartConfigure() throws Exception;
+	   public String chartConfigure(String chartType, List<Analytics> analyticsList) throws Exception;
 	   
 }
