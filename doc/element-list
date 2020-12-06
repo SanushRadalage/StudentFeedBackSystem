@@ -1,2 +1,5 @@
-com.dream.mobile.rmi.interfaces
-com.dream.mobile.server
+com.feedback.backend
+com.feedback.controller
+com.feedback.interfaces
+com.feedback.model
+com.feedback.view

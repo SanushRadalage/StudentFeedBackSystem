@@ -1,7 +1,12 @@
 package com.feedback.model;
 
+/**
+ * Find the repository - https://github.com/SanushRadalage/StudentFeedbackSystem
+ * 
+ * @author Maleeka Sanush Radalage
+ */
 public class SelectedAnswers {
-		
+
 	int questionId;
 	int selectedAnswerId;
 	public SelectedAnswers(int questionId, int selectedAnswerId) {

@@ -2,11 +2,13 @@ package com.feedback.model;
 
 import java.io.Serializable;
 
+/**
+ * Find the repository - https://github.com/SanushRadalage/StudentFeedbackSystem
+ * 
+ * @author Maleeka Sanush Radalage
+ */
 public class Questionnaire implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1898696433964023773L;
 	
 	private int questionId;

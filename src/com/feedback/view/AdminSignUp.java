@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 
 import com.feedback.controller.QuestionnaireController;
+import com.feedback.model.Admin;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,16 +27,19 @@ import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * This GUI prevent the unauthorized user's to access the analytics view by
+ * checking the provided user name and password.<br><br>
+ * Find the repository - https://github.com/SanushRadalage/StudentFeedbackSystem
+ * 
+ * @author Maleeka Sanush Radalage
+ */
 public class AdminSignUp extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2763124822272080102L;
-	
+
 	QuestionnaireController questionnaireController = new QuestionnaireController();
 
-	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
@@ -45,9 +49,6 @@ public class AdminSignUp extends JFrame {
 	private JLabel lblNewLabel_4;
 	private JLabel lblNewLabel_5;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,7 +63,7 @@ public class AdminSignUp extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Constructor create the frame.
 	 */
 	public AdminSignUp() {
 		setResizable(false);
@@ -73,30 +74,32 @@ public class AdminSignUp extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnNewButton = new JButton("Sign In");
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				
+
 				try {
-					if(questionnaireController.signIn(textField.getText(), passwordField.getText())) {
+					Admin admin = new Admin(1, textField.getText(), passwordField.getText());
+					if (questionnaireController.signIn(admin)) {
 						AnalyticsView analyticView = new AnalyticsView();
 						analyticView.setVisible(true);
 						AdminSignUp.this.dispose();
 					} else {
-						  JDialog.setDefaultLookAndFeelDecorated(true);
-						    int response = JOptionPane.showConfirmDialog(null, "Invalid credentials, Do you want to try again?", "warning!",
-						        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-						    if (response == JOptionPane.NO_OPTION) {}
-						    else if (response == JOptionPane.YES_OPTION) {
-						    	textField.setText(null);
-						    	passwordField.setText(null);
-						    }
+						JDialog.setDefaultLookAndFeelDecorated(true);
+						int response = JOptionPane.showConfirmDialog(null,
+								"Invalid credentials, Do you want to try again?", "warning!", JOptionPane.YES_NO_OPTION,
+								JOptionPane.QUESTION_MESSAGE);
+						if (response == JOptionPane.NO_OPTION) {
+						} else if (response == JOptionPane.YES_OPTION) {
+							textField.setText(null);
+							passwordField.setText(null);
+						}
 					}
 				} catch (Exception e2) {
 					e2.printStackTrace();
-				}				
+				}
 			}
 		});
 		btnNewButton.setAlignmentY(0.0f);
@@ -107,7 +110,6 @@ public class AdminSignUp extends JFrame {
 		btnNewButton.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
 		contentPane.add(btnNewButton);
 
-		
 		textField = new JTextField();
 		textField.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
@@ -115,41 +117,41 @@ public class AdminSignUp extends JFrame {
 		textField.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
 		passwordField.setHorizontalAlignment(SwingConstants.CENTER);
 		passwordField.setBounds(437, 157, 180, 35);
 		passwordField.setBorder(new MatteBorder(2, 2, 2, 2, Color.BLACK));
 		contentPane.add(passwordField);
-		
+
 		lblNewLabel_1 = new JLabel("User Name");
 		lblNewLabel_1.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(329, 97, 83, 24);
 		contentPane.add(lblNewLabel_1);
-		
+
 		lblNewLabel_2 = new JLabel("Password");
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 15));
 		lblNewLabel_2.setBounds(329, 163, 76, 24);
 		contentPane.add(lblNewLabel_2);
-		
+
 		lblNewLabel_4 = new JLabel("Please signin");
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
 		lblNewLabel_4.setBounds(81, 202, 148, 35);
 		contentPane.add(lblNewLabel_4);
-		
+
 		lblNewLabel_5 = new JLabel("to get feedback analatics");
 		lblNewLabel_5.setForeground(Color.WHITE);
 		lblNewLabel_5.setFont(new Font("Bahnschrift", Font.PLAIN, 20));
 		lblNewLabel_5.setBounds(31, 232, 233, 35);
 		contentPane.add(lblNewLabel_5);
-		
+
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				IntroPage introPage =new IntroPage();
+				IntroPage introPage = new IntroPage();
 				introPage.setVisible(true);
 				AdminSignUp.this.dispose();
 			}
@@ -158,18 +160,16 @@ public class AdminSignUp extends JFrame {
 		lblNewLabel_6.setBackground(new Color(240, 240, 240));
 		lblNewLabel_6.setBounds(8, 10, 42, 35);
 		contentPane.add(lblNewLabel_6);
-	
-	
+
 		lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(AdminSignUp.class.getResource("/img/padlock.png")));
 		lblNewLabel_3.setBounds(94, 48, 128, 144);
 		contentPane.add(lblNewLabel_3);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(AdminSignUp.class.getResource("/img/sign.png")));
 		lblNewLabel.setBounds(0, 0, 304, 413);
 		contentPane.add(lblNewLabel);
-	
-		
+
 	}
 }

@@ -13,21 +13,18 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
+/**
+ * This is the on-boarding screen.<br><br>
+ * Find the repository - https://github.com/SanushRadalage/StudentFeedbackSystem
+ * 
+ * @author Maleeka Sanush Radalage
+ */
 public class IntroPage extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7509028678520003425L;
 	
-	/**
-	 * 
-	 */
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,7 +39,7 @@ public class IntroPage extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Constructor creates the frame.
 	 */
 	public IntroPage() {
 		
@@ -67,7 +64,6 @@ public class IntroPage extends JFrame {
 					questionnaire.setVisible(true);
 
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				IntroPage.this.dispose();
