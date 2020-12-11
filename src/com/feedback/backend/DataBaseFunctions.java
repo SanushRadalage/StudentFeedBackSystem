@@ -311,13 +311,13 @@ public class DataBaseFunctions extends UnicastRemoteObject implements RemoteInte
 		properties.put("mail.smtp.port", 587);
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.user", "sender@gmail.com");
-		properties.put("mail.password", "password");
+		properties.put("mail.user", "tom@gmail.com");
+		properties.put("mail.password", "password123");
 
 		// creates a new session with an authenticator
 		Authenticator auth = new Authenticator() {
 			public PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("sender@gmail.com", "password");
+				return new PasswordAuthentication("tom@gmail.com", "password123");
 			}
 		};
 		Session session = Session.getInstance(properties, auth);
@@ -325,7 +325,7 @@ public class DataBaseFunctions extends UnicastRemoteObject implements RemoteInte
 		// creates a new e-mail message
 		Message msg = new MimeMessage(session);
 
-		msg.setFrom(new InternetAddress("sender@gmail.com"));
+		msg.setFrom(new InternetAddress("tom@gmail.com"));
 		InternetAddress[] toAddresses = { new InternetAddress(toAddress) };
 		msg.setRecipients(Message.RecipientType.TO, toAddresses);
 		msg.setSubject("feedback Analytics reports");

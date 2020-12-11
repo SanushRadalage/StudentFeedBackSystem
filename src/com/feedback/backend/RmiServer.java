@@ -21,7 +21,7 @@ public class RmiServer {
 			Registry reg = LocateRegistry.createRegistry(1099);
 			reg.bind("QuestionService", dbObject);
 
-			System.out.println("started the RMI service successfully");
+			System.out.println("started the RMI server successfully");
 
 		} catch (Exception e) {
 			System.err.println("Server exception: " + e.toString());

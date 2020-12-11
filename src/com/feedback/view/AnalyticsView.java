@@ -139,7 +139,7 @@ public class AnalyticsView extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				try {
-					questionnaireController.sendEmailWithAttachments("reciever@gmail.com");
+					questionnaireController.sendEmailWithAttachments("jane@gmail.com");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
